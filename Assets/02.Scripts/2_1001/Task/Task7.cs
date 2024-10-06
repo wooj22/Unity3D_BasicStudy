@@ -43,7 +43,7 @@ public class Task7 : MonoBehaviour
     private void SpinMouse()
     {
         mouseX = Input.GetAxis("Mouse X");
-        spinAxis = transform.TransformDirection(new Vector3(mouseX, 0, 0)).normalized;
+        spinAxis = transform.TransformDirection(new Vector3(0, mouseX, 0)).normalized;
 
         rb.angularVelocity = spinAxis * spinSpeed;
     }

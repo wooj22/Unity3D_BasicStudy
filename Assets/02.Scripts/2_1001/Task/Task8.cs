@@ -10,11 +10,11 @@ public class Task8 : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector3 moveDir;
-    private float speed = 10f;
-    private float jumpSpeed = 5f;
+    private float speed = 5f;
+    private float jumpSpeed = 7f;
+
     private float keyX;
     private float keyZ;
-
     private Vector3 Vel;
 
     private void Start()
@@ -37,7 +37,9 @@ public class Task8 : MonoBehaviour
         keyZ = Input.GetAxis("Vertical");
         moveDir = new Vector3(keyX, 0, keyZ).normalized;
 
-        Vel = moveDir * speed;
+        Vel.x = keyX * speed;
+        Vel.z = keyZ * speed;
+        //Vel = moveDir * speed;
     }
 
     // มกวม

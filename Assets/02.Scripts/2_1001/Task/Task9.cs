@@ -15,7 +15,6 @@ public class Task9 : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector3 moveDir;
-    private Vector3 spinAxis;
     private float speed = 5f;
     private float rotationSpeed = 90f;
     private float jumpSpeed = 5f;  
@@ -45,16 +44,14 @@ public class Task9 : MonoBehaviour
         keyVertical = Input.GetAxis("Vertical"); 
         moveDir = transform.TransformDirection(new Vector3(0,0,keyVertical)).normalized;
 
-        Vel = moveDir * speed;
+        Vel.z = moveDir.z * speed;
     }
 
     // 회전(월드)
     private void RotateKey()
     {
         keyHorizontal = Input.GetAxis("Horizontal");
-        spinAxis = new Vector3(0, keyHorizontal, 0).normalized;
-
-        rb.angularVelocity = spinAxis * rotationSpeed * Mathf.Deg2Rad;
+        rb.angularVelocity = Vector3.up * keyHorizontal * rotationSpeed * Mathf.Deg2Rad;
     }
 
     // 점프
