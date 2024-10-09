@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 과제 7
 public class PhysicsPlayerCtrl : MonoBehaviour
 {
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Rigidbody rb;
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 7f;
+    public float moveSpeed;
+    public float rotationSpeed;
+
+    private Vector3 moveDir;
     private float mouseX;
-    private float keyVertical;
-    private float keyHorizontal;
+    private float keyWS;
+    private float keyAD;
 
     private void Update()
     {
@@ -22,14 +25,18 @@ public class PhysicsPlayerCtrl : MonoBehaviour
     // 상하좌우 방향키로 XZ 평면 전후좌우 이동 (월드 기준)
     void Move()
     {
-        keyVertical = Input.GetAxis("Vertical");
-        keyHorizontal = Input.GetAxis("Horizontal");
+        keyWS = Input.GetAxis("Vertical");
+        keyAD = Input.GetAxis("Horizontal");
+
+        moveDir = new Vector3(keyAD, 0, keyWS).normalized;
+        rb.velocity = moveDir * moveSpeed;
     }
 
-    // 마우스 수평 이동으로 Y축 기준 회전
+    // 마우스 수평 이동으로 Y축 기준 회전 (월드 기준)
     void Rotation()
     {
         mouseX = Input.GetAxis("Mouse X");
+        rb.angularVelocity = Vector3.up * mouseX * rotationSpeed;
     }
 
     // 스페이스바로 총알 발사

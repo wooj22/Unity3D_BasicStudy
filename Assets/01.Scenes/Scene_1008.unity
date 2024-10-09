@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &90038992
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1123294274108885010, guid: d4f284a5199b08146b8e4fcb601530ab, type: 3}
   rb: {fileID: 90038996}
   moveSpeed: 5
-  rotationSpeed: 7
+  rotationSpeed: 100
 --- !u!1 &319773763
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1277621425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -968,7 +968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1507332784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1669163154494013528, guid: 3e3ff2ae568147f4ea0f247842e43489, type: 3}
   moveSpeed: 5
-  rotationSpeed: 7
+  rotationSpeed: 100
 --- !u!1 &1597616801
 GameObject:
   m_ObjectHideFlags: 0

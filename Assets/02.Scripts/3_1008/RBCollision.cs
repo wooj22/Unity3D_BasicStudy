@@ -10,7 +10,7 @@ public class RBCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("OnCollisionEnter : " + collision.gameObject.name);
-        Destroy(collision.gameObject, 2f);
+        //Destroy(collision.gameObject, 2f);
     }
 
     // 오브젝트가 접촉한 상태

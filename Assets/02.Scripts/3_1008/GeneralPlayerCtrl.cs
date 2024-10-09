@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 과제 6
 public class GeneralPlayerCtrl : MonoBehaviour
 {
     [SerializeField] public GameObject bulletPrefab;
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 7f;
+    public float moveSpeed;
+    public float rotationSpeed;
+
+    private Vector3 moveDir;
+
     private float mouseX;
-    private float keyVertical;
-    private float keyHorizontal;
+    private float keyAD;
+    private float keyWS;
 
     private void Update()
     {
@@ -21,14 +25,18 @@ public class GeneralPlayerCtrl : MonoBehaviour
     // 상하좌우 방향키로 XY 평면 상하좌우 이동 (월드 기준)
     void Move()
     {
-        keyVertical = Input.GetAxis("Vertical");
-        keyHorizontal = Input.GetAxis("Horizontal");
+        keyAD = Input.GetAxis("Horizontal");
+        keyWS = Input.GetAxis("Vertical");
+
+        moveDir = (new Vector3(keyAD, keyWS, 0) * moveSpeed * Time.deltaTime);
+        transform.Translate(moveDir, Space.World);
     }
 
-    // 마우스 수평 이동으로 Z축 기준 회전
+    // 마우스 수평 이동으로 Z축 기준 회전 (월드 기준)
     void Rotation()
     {
         mouseX = Input.GetAxis("Mouse X");
+        transform.Rotate(0, 0, mouseX * rotationSpeed * Time.deltaTime, Space.World);
     }
 
     // 스페이스바로 총알 발사
