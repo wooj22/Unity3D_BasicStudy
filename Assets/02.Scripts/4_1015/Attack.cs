@@ -11,7 +11,7 @@ public class Attack : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(AttackPlayer), 1, 1);
+        InvokeRepeating(nameof(AttackPlayer), 1, 2);
     }
 
     void AttackPlayer()
