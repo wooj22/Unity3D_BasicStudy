@@ -68,6 +68,7 @@ public class MoveAgent : MonoBehaviour
     {
         patrolling = patrol;
         agent.speed = patrolSpeed;
+        agent.angularSpeed = 120f;
         MoveWayPoint();
     }
 
@@ -76,7 +77,14 @@ public class MoveAgent : MonoBehaviour
     {
         traceTarget = pos;
         agent.speed = traceSpeed;
+        agent.angularSpeed = 360f;
         TraceTarget(traceTarget);
+    }
+
+    /// 이동 속력 get
+    public float GetSpeed()
+    {
+        return agent.velocity.magnitude;
     }
 
     /// 정지

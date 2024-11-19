@@ -30,6 +30,8 @@ public class EnemyAI : MonoBehaviour
     public MoveAgent moveAgent;
     public Animator animator;
 
+    EnemyFire enemyFire;
+
     private void Awake()
     {
         // 플레이어 위치 get
@@ -42,6 +44,12 @@ public class EnemyAI : MonoBehaviour
         ws = new WaitForSeconds(0.3f);
         moveAgent = GetComponent<MoveAgent>();
         animator = GetComponent<Animator>();
+        enemyFire = GetComponent<EnemyFire>();
+    }
+
+    private void Update()
+    {
+        animator.SetFloat("Speed", moveAgent.GetSpeed());   // 현재 속도 전달
     }
 
     private void OnEnable() // 활성화 생명주기
@@ -80,20 +88,26 @@ public class EnemyAI : MonoBehaviour
             switch (state)
             {
                 case State.PATROL:  // 순찰
+                    enemyFire.isFire = false;
                     moveAgent.SetPatrolling(true);
                     animator.SetBool("isMove", true);
                     break;
                 case State.TRACE:  // 추적
+                    enemyFire.isFire = false;
                     moveAgent.SetTraceTarget(playerTr.position);
                     animator.SetBool("isMove", true);
                     break;
                 case State.ATTACK:  // 공격
+                    enemyFire.isFire = true;
                     moveAgent.Stop();
                     animator.SetBool("isMove", false);
                     break;
                 case State.DIE:  // 사망
+                    isDie = true;
+                    enemyFire.isFire = false;
                     moveAgent.Stop();
-                    animator.SetBool("isMove", false);
+                    animator.SetTrigger("Die");
+                    GetComponent<CapsuleCollider>().enabled = false;
                     break;
             }
         }       

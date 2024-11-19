@@ -6,6 +6,11 @@ public class RemoveBullet : MonoBehaviour
 {
     public GameObject sparkEffect;
 
+    private void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
     private void OnCollisionEnter(Collision coll)
     {
         if(coll.gameObject.CompareTag("BULLET"))
@@ -25,6 +30,5 @@ public class RemoveBullet : MonoBehaviour
 
         GameObject spark = Instantiate(sparkEffect, contact.point - (contact.normal * 0.05f), rot);
         spark.transform.SetParent(this.transform);
-        Debug.Log("½ºÆÄÅ©");
     }
 }
