@@ -45,6 +45,10 @@ public class EnemyAI : MonoBehaviour
         moveAgent = GetComponent<MoveAgent>();
         animator = GetComponent<Animator>();
         enemyFire = GetComponent<EnemyFire>();
+
+        // 애니메이션 시작 지점, 이동 속도
+        animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
+        animator.SetFloat("WalkSpeed", Random.Range(1.0f, 1.2f));
     }
 
     private void Update()
@@ -111,5 +115,18 @@ public class EnemyAI : MonoBehaviour
                     break;
             }
         }       
+    }
+
+    /// 플레이어 사망
+    public void OnPlayerDie()
+    {
+        if(isDie == false)
+        {
+            moveAgent.Stop();
+            enemyFire.isFire = false;
+
+            StopAllCoroutines();
+            animator.SetTrigger("PlayerDie");
+        }
     }
 }

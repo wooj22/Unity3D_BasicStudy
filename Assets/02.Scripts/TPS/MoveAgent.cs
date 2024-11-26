@@ -28,6 +28,8 @@ public class MoveAgent : MonoBehaviour
         {
             group.GetComponentsInChildren(wayPoints);
             wayPoints.RemoveAt(0);
+
+            nextIndex = Random.Range(0, wayPoints.Count);
         }
 
         SetPatrolling(true);    // ¼øÂû set
@@ -42,7 +44,7 @@ public class MoveAgent : MonoBehaviour
         if(agent.velocity.magnitude > 0.2f &&
             agent.remainingDistance < 0.5f)
         {
-            nextIndex = ++nextIndex % wayPoints.Count;
+            nextIndex = Random.Range(0, wayPoints.Count);
             MoveWayPoint();
         }
     }
