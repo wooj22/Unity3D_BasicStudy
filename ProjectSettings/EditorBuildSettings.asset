@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/01.Scenes/TPS.unity
+    guid: 76c0b7d85e60f4b42a64e42632714e0f
   m_configObjects: {}

@@ -43,6 +43,9 @@ public class EnemyDamege : MonoBehaviour
             {
                 GetComponent<EnemyAI>().state = EnemyAI.State.DIE;
                 hpBarImage.GetComponentsInParent<Image>()[1].color = Color.clear;
+
+                Destroy(gameObject, 5f);
+                GameObject.Find("GameManager").GetComponent<GameManager>().AddKillCount();
             }   
         }
     }

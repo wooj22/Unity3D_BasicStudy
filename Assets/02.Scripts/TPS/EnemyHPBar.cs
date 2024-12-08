@@ -21,6 +21,10 @@ public class EnemyHPBar : MonoBehaviour
 
     private void LateUpdate()
     {
+
+        if (targetTr == null)
+            return;
+
         // 스크린 좌표 변환
         Vector3 screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
 

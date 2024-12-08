@@ -63,5 +63,7 @@ public class Damage : MonoBehaviour
 
         for (int i = 0; i < enemies.Length; i++)
             enemies[i].SendMessage("OnPlayerDie");
+
+        GameObject.Find("GameManager").GetComponent<GameManager>().isGameOver = true;
     }
 }

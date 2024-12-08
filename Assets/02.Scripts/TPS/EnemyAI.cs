@@ -34,8 +34,10 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.Find("Player");
+
         // 플레이어 위치 get
-        if(player != null)
+        if (player != null)
         {
             playerTr = player.transform;
         }
@@ -112,6 +114,9 @@ public class EnemyAI : MonoBehaviour
                     moveAgent.Stop();
                     animator.SetTrigger("Die");
                     GetComponent<CapsuleCollider>().enabled = false;
+
+                    gameObject.tag = "Untagged";
+
                     break;
             }
         }       
